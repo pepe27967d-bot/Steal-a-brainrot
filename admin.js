@@ -1,5 +1,5 @@
 // Admin Panel System
-const ADMIN_PASSWORD = 'pepe27967d'; // Change this to your password
+const ADMIN_PASSWORD = '123123'; // Admin password
 let adminLoggedIn = false;
 let selectedBrainrotForSpawn = null;
 

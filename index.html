@@ -44,14 +44,17 @@
                 <div class="map">
                     <!-- Conveyor Belt -->
                     <div class="conveyor-belt">
-                        <div class="conveyor-label">CONVEYOR BELT</div>
+                        <div class="conveyor-label">CONVEYOR BELT - BUY HERE</div>
                     </div>
 
-                    <!-- Players Area -->
-                    <div class="players-area">
-                        <div class="player-slot" id="player-slot">
-                            <div class="base-header">Your Base</div>
-                            <button class="lock-btn" id="lockBtn">🔓 Unlock</button>
+                    <!-- Your Base -->
+                    <div class="your-base-section">
+                        <div class="base-card your-base">
+                            <div class="base-header">🏠 YOUR BASE</div>
+                            <div class="base-lock">
+                                <button class="lock-btn" id="lockBtn">🔓 Unlock Base</button>
+                                <span id="lockStatus">Unlocked</span>
+                            </div>
                             <div class="base-content" id="yourBase">
                                 <!-- Your brainrots display here -->
                             </div>
@@ -59,7 +62,7 @@
                     </div>
 
                     <!-- Other Players (Enemies) -->
-                    <div class="enemies-area">
+                    <div class="enemies-section">
                         <h3>👾 Enemy Bases</h3>
                         <div class="enemies-grid" id="enemiesGrid">
                             <!-- Enemy bases will be generated here -->
@@ -70,22 +73,23 @@
 
             <!-- Right Side - Inventory & Stats -->
             <div class="inventory-section">
-                <h2>📦 Inventory</h2>
+                <h2>📦 Holding Item</h2>
                 <div class="inventory-box" id="inventory">
-                    <!-- Inventory items display here -->
+                    <p>Nothing in hand</p>
                 </div>
 
                 <h2>⚔️ Combat</h2>
                 <button class="btn-combat" id="combatBtn">🔨 Equip Bat</button>
-                <div id="combatStatus"></div>
+                <div id="combatStatus" class="combat-status"></div>
 
-                <h2>🎮 Controls</h2>
-                <div class="controls-info">
-                    <p>✅ Buy brainrots from the shop</p>
-                    <p>✅ Click enemy bases to steal</p>
-                    <p>✅ Earn passive income</p>
-                    <p>✅ Use bat in combat</p>
+                <h2>📋 Game Info</h2>
+                <div class="game-info">
+                    <p>✅ Buy brainrots from shop</p>
+                    <p>✅ Brainrots earn passive $</p>
+                    <p>✅ Click enemies to steal</p>
+                    <p>✅ Use bat to hit enemies</p>
                     <p>✅ Lock your base</p>
+                    <p>✅ Rebirth for multipliers</p>
                 </div>
             </div>
         </div>

@@ -7,6 +7,138 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Admin Access Button (Hidden) -->
+    <button id="adminAccessBtn" class="admin-access-btn" style="display:none;">🔐</button>
+
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="modal hidden">
+        <div class="modal-content admin-login-content">
+            <h2>🔐 Admin Panel Login</h2>
+            <input type="password" id="adminPassword" placeholder="Enter admin password" class="admin-input">
+            <div class="modal-buttons">
+                <button onclick="loginAdmin()" class="btn-modal">Login</button>
+                <button onclick="closeAdminLogin()" class="btn-modal btn-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" class="admin-panel hidden">
+        <div class="admin-panel-header">
+            <h1>⚙️ ADMIN PANEL</h1>
+            <button onclick="closeAdminPanel()" class="admin-close-btn">✕</button>
+        </div>
+
+        <div class="admin-tabs">
+            <button class="admin-tab active" onclick="switchAdminTab('player')">👤 Player</button>
+            <button class="admin-tab" onclick="switchAdminTab('enemies')">👾 Enemies</button>
+            <button class="admin-tab" onclick="switchAdminTab('spawn')">🧠 Spawn</button>
+            <button class="admin-tab" onclick="switchAdminTab('settings')">⚙️ Settings</button>
+        </div>
+
+        <div class="admin-content">
+            <!-- Player Management -->
+            <div id="playerTab" class="admin-tab-content active">
+                <h3>👤 Player Management</h3>
+                <div class="admin-section">
+                    <label>💰 Set Cash Amount:</label>
+                    <input type="number" id="adminCash" placeholder="Enter cash amount" class="admin-input">
+                    <button onclick="setPlayerCash()" class="btn-admin">Set Cash</button>
+                </div>
+
+                <div class="admin-section">
+                    <label>📊 Set Multiplier:</label>
+                    <input type="number" id="adminMultiplier" placeholder="Enter multiplier" step="0.5" class="admin-input">
+                    <button onclick="setPlayerMultiplier()" class="btn-admin">Set Multiplier</button>
+                </div>
+
+                <div class="admin-section">
+                    <label>🔄 Force Rebirth:</label>
+                    <button onclick="forcePlayerRebirth()" class="btn-admin btn-danger">Rebirth Player</button>
+                </div>
+
+                <div class="admin-section">
+                    <label>🧠 Give Brainrot:</label>
+                    <select id="adminBrainrotType" class="admin-input">
+                        <option value="">Select brainrot type</option>
+                    </select>
+                    <button onclick="giveBrainrot()" class="btn-admin">Give Brainrot</button>
+                </div>
+
+                <div class="admin-section">
+                    <label>🗑️ Clear All Brainrots:</label>
+                    <button onclick="clearPlayerBrainrots()" class="btn-admin btn-danger">Clear All</button>
+                </div>
+
+                <div class="admin-stats">
+                    <h4>Current Stats:</h4>
+                    <p>💰 Cash: <span id="adminPlayerCash">$0</span></p>
+                    <p>📊 Multiplier: <span id="adminPlayerMultiplier">x1</span></p>
+                    <p>🧠 Brainrots: <span id="adminPlayerBrainrotCount">0</span></p>
+                </div>
+            </div>
+
+            <!-- Enemy Management -->
+            <div id="enemiesTab" class="admin-tab-content">
+                <h3>👾 Enemy Management</h3>
+                <div class="admin-enemies-list" id="adminEnemiesList">
+                    <!-- Enemy list will be generated here -->
+                </div>
+            </div>
+
+            <!-- Spawn Brainrots -->
+            <div id="spawnTab" class="admin-tab-content">
+                <h3>🧠 Spawn Brainrots</h3>
+                <div class="admin-section">
+                    <label>Select Brainrot Type:</label>
+                    <div class="brainrot-grid" id="spawnBrainrotGrid">
+                        <!-- Brainrots will be listed here -->
+                    </div>
+                </div>
+                <div class="admin-section">
+                    <label>Quantity:</label>
+                    <input type="number" id="spawnQuantity" value="1" min="1" class="admin-input">
+                    <button onclick="spawnSelectedBrainrot()" class="btn-admin">Spawn to Inventory</button>
+                </div>
+                <div class="admin-section">
+                    <label>Give to Enemy:</label>
+                    <select id="spawnEnemySelect" class="admin-input">
+                        <option value="">Select enemy</option>
+                    </select>
+                    <button onclick="spawnToEnemy()" class="btn-admin">Give to Enemy</button>
+                </div>
+            </div>
+
+            <!-- Settings -->
+            <div id="settingsTab" class="admin-tab-content">
+                <h3>⚙️ Admin Settings</h3>
+                <div class="admin-section">
+                    <label>🔐 Change Admin Password:</label>
+                    <input type="password" id="newAdminPassword" placeholder="Enter new password" class="admin-input">
+                    <button onclick="changeAdminPassword()" class="btn-admin">Change Password</button>
+                </div>
+
+                <div class="admin-section">
+                    <label>🔄 Respawn All Enemies:</label>
+                    <button onclick="respawnAllEnemies()" class="btn-admin btn-warning">Respawn Enemies</button>
+                </div>
+
+                <div class="admin-section">
+                    <label>💾 Game Stats:</label>
+                    <div class="admin-stats">
+                        <p>Total Enemies: <span id="adminTotalEnemies">0</span></p>
+                        <p>Game Running: <span id="adminGameStatus">Active</span></p>
+                    </div>
+                </div>
+
+                <div class="admin-section">
+                    <label>🔒 Logout:</label>
+                    <button onclick="logoutAdmin()" class="btn-admin btn-danger">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="game-container">
         <!-- Header -->
         <div class="header">
@@ -96,5 +228,6 @@
     </div>
 
     <script src="game.js"></script>
+    <script src="admin.js"></script>
 </body>
 </html>

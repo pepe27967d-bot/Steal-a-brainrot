@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steal a Brainrot - Web Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🧠 Steal a Brainrot</h1>
+            <div class="header-stats">
+                <div class="stat">
+                    <span>💰 Cash:</span>
+                    <span id="playerCash">$0</span>
+                </div>
+                <div class="stat">
+                    <span>📊 Income/sec:</span>
+                    <span id="playerIncome">$0</span>
+                </div>
+                <div class="stat">
+                    <span>🧠 Brainrots:</span>
+                    <span id="playerBrainrots">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Game Area -->
+        <div class="game-area">
+            <!-- Left Side - Shop -->
+            <div class="shop-section">
+                <h2>🏪 Brain Shop</h2>
+                <div class="shop-container" id="shopContainer">
+                    <!-- Brainrots will be generated here -->
+                </div>
+                <button class="btn-rebirth">🔄 Rebirth (Reset for x2 Multiplier)</button>
+            </div>
+
+            <!-- Center - Map -->
+            <div class="map-section">
+                <h2>🗺️ Game Map</h2>
+                <div class="map">
+                    <!-- Conveyor Belt -->
+                    <div class="conveyor-belt">
+                        <div class="conveyor-label">CONVEYOR BELT</div>
+                    </div>
+
+                    <!-- Players Area -->
+                    <div class="players-area">
+                        <div class="player-slot" id="player-slot">
+                            <div class="base-header">Your Base</div>
+                            <button class="lock-btn" id="lockBtn">🔓 Unlock</button>
+                            <div class="base-content" id="yourBase">
+                                <!-- Your brainrots display here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Other Players (Enemies) -->
+                    <div class="enemies-area">
+                        <h3>👾 Enemy Bases</h3>
+                        <div class="enemies-grid" id="enemiesGrid">
+                            <!-- Enemy bases will be generated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side - Inventory & Stats -->
+            <div class="inventory-section">
+                <h2>📦 Inventory</h2>
+                <div class="inventory-box" id="inventory">
+                    <!-- Inventory items display here -->
+                </div>
+
+                <h2>⚔️ Combat</h2>
+                <button class="btn-combat" id="combatBtn">🔨 Equip Bat</button>
+                <div id="combatStatus"></div>
+
+                <h2>🎮 Controls</h2>
+                <div class="controls-info">
+                    <p>✅ Buy brainrots from the shop</p>
+                    <p>✅ Click enemy bases to steal</p>
+                    <p>✅ Earn passive income</p>
+                    <p>✅ Use bat in combat</p>
+                    <p>✅ Lock your base</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

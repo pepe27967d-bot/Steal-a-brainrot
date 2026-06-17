@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Steal a Brainrot - Web Game</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
     <!-- Admin Access Button (Hidden) -->
@@ -113,18 +114,12 @@
             <div id="settingsTab" class="admin-tab-content">
                 <h3>⚙️ Admin Settings</h3>
                 <div class="admin-section">
-                    <label>🔐 Change Admin Password:</label>
-                    <input type="password" id="newAdminPassword" placeholder="Enter new password" class="admin-input">
-                    <button onclick="changeAdminPassword()" class="btn-admin">Change Password</button>
-                </div>
-
-                <div class="admin-section">
                     <label>🔄 Respawn All Enemies:</label>
                     <button onclick="respawnAllEnemies()" class="btn-admin btn-warning">Respawn Enemies</button>
                 </div>
 
                 <div class="admin-section">
-                    <label>💾 Game Stats:</label>
+                    <label>📊 Game Stats:</label>
                     <div class="admin-stats">
                         <p>Total Enemies: <span id="adminTotalEnemies">0</span></p>
                         <p>Game Running: <span id="adminGameStatus">Active</span></p>
@@ -132,7 +127,7 @@
                 </div>
 
                 <div class="admin-section">
-                    <label>🔒 Logout:</label>
+                    <label>🔐 Logout:</label>
                     <button onclick="logoutAdmin()" class="btn-admin btn-danger">Logout</button>
                 </div>
             </div>
@@ -170,36 +165,18 @@
                 <button class="btn-rebirth">🔄 Rebirth (Reset for x2 Multiplier)</button>
             </div>
 
-            <!-- Center - Map -->
+            <!-- Center - 3D Map -->
             <div class="map-section">
-                <h2>🗺️ Game Map</h2>
-                <div class="map">
-                    <!-- Conveyor Belt -->
-                    <div class="conveyor-belt">
-                        <div class="conveyor-label">CONVEYOR BELT - BUY HERE</div>
-                    </div>
-
-                    <!-- Your Base -->
-                    <div class="your-base-section">
-                        <div class="base-card your-base">
-                            <div class="base-header">🏠 YOUR BASE</div>
-                            <div class="base-lock">
-                                <button class="lock-btn" id="lockBtn">🔓 Unlock Base</button>
-                                <span id="lockStatus">Unlocked</span>
-                            </div>
-                            <div class="base-content" id="yourBase">
-                                <!-- Your brainrots display here -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Other Players (Enemies) -->
-                    <div class="enemies-section">
-                        <h3>👾 Enemy Bases</h3>
-                        <div class="enemies-grid" id="enemiesGrid">
-                            <!-- Enemy bases will be generated here -->
-                        </div>
-                    </div>
+                <h2>🗺️ Game World (3D)</h2>
+                <div id="canvas3D" class="canvas3d"></div>
+                
+                <div class="game-info-3d">
+                    <h3>📍 How to Play</h3>
+                    <p>💰 Buy brainrots from shop on the left</p>
+                    <p>🧠 Collect them to earn passive income</p>
+                    <p>👾 Click enemy bases on right to steal</p>
+                    <p>🔐 Lock your base to protect items</p>
+                    <p>🔄 Rebirth to get multipliers!</p>
                 </div>
             </div>
 
@@ -210,18 +187,22 @@
                     <p>Nothing in hand</p>
                 </div>
 
+                <h2>🏠 Your Base</h2>
+                <div class="base-lock">
+                    <button class="lock-btn" id="lockBtn">🔓 Lock Base</button>
+                    <span id="lockStatus">Unlocked</span>
+                </div>
+                <div class="base-content-mini" id="yourBaseMini">
+                    <!-- Your brainrots display here -->
+                </div>
+
                 <h2>⚔️ Combat</h2>
                 <button class="btn-combat" id="combatBtn">🔨 Equip Bat</button>
                 <div id="combatStatus" class="combat-status"></div>
 
-                <h2>📋 Game Info</h2>
-                <div class="game-info">
-                    <p>✅ Buy brainrots from shop</p>
-                    <p>✅ Brainrots earn passive $</p>
-                    <p>✅ Click enemies to steal</p>
-                    <p>✅ Use bat to hit enemies</p>
-                    <p>✅ Lock your base</p>
-                    <p>✅ Rebirth for multipliers</p>
+                <h2>👾 Enemy Bases</h2>
+                <div class="enemies-grid-small" id="enemiesGridSmall">
+                    <!-- Small enemy bases -->
                 </div>
             </div>
         </div>
@@ -229,5 +210,6 @@
 
     <script src="game.js"></script>
     <script src="admin.js"></script>
+    <script src="map3d.js"></script>
 </body>
 </html>
